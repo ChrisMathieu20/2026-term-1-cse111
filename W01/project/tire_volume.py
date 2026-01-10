@@ -58,7 +58,7 @@ elif w == 225:
             price = 185.00
         else:
             out_of_range = True
-    if a == 40:
+    elif a == 40:
         if d == 18:
             price = 150.00
         else:
@@ -76,8 +76,15 @@ else:
 if not out_of_range:
     print(f"Tire size: {w}/{a}R{d}\tApproximate Volume: {v:.2f} liters\tPrice: ${price}")
 
-    # Log the information in a text file
-    with open("volume.txt", mode="at") as volumes_file:
-        print(f"{current:%Y-%m-%d}, {w}, {a}, {d}, {v:.2f}, ", file=volumes_file)
+    user_answer = input("Would you like to buy this tire size? (yes/no): ").lower()
+
+    if user_answer == "yes":
+        phone_number = input("Please enter your phone number: ")
+        # Log the information in a text file
+        with open("volume.txt", mode="at") as volumes_file:
+            print(f"{current:%Y-%m-%d}, {w}, {a}, {d}, {v:.2f}, {phone_number}", file=volumes_file)
+        print("Thank you for your purchase!")
+    else:
+        print("No problem, have a great day!")
 else:
-    print("Sorry, we don't have a price for that tire size.")    
+    print("Sorry, we don't have that tire size.")    
