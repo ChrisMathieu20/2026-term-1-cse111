@@ -57,7 +57,7 @@ def reynolds_number(hydraulic_diameter, fluid_velocity):
     return density * hydraulic_diameter * fluid_velocity / viscosity
 
 def pressure_loss_from_pipe_reduction(larger_diameter, fluid_velocity, reynolds_number, smaller_diameter):
-    k=((.1 + 50) / reynolds_number) * (((larger_diameter / smaller_diameter) ** 4) - 1)
+    k=(.1 + (50 / reynolds_number)) * (((larger_diameter / smaller_diameter) ** 4) - 1)
     return -k * WATER_DENSITY * fluid_velocity ** 2 / 2000
 
 if __name__ == "__main__":
